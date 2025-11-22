@@ -44,25 +44,23 @@ export default function Navbar() {
         {/* ========= MOBILE TOP BAR ========= */}
         <div
           className="
-            md:hidden
-            w-full flex items-center justify-between 
-            px-4 py-2
-            rounded-[20px]
-            bg-[#2B2623]/90
-            backdrop-blur-[8px]
-            border border-white/10
-          "
+          md:hidden
+          w-full flex items-center justify-between 
+          px-4 py-2
+          rounded-[20px]
+          bg-[#2B2623]/90
+          backdrop-blur-[8px]
+          border border-white/10
+        "
         >
           {/* Logo */}
-          <div className="flex items-center gap-2">
-            <Image
-              src="/assets/images/hebt-logo.svg"
-              alt="HEBT AI"
-              width={142}
-              height={48}
-              className="object-contain"
-            />
-          </div>
+          <Image
+            src="/assets/images/hebt-logo.svg"
+            alt="HEBT AI"
+            width={142}
+            height={48}
+            className="object-contain"
+          />
 
           {/* Menu toggle */}
           <button onClick={() => setOpen(!open)}>
@@ -97,9 +95,9 @@ export default function Navbar() {
           className="
             hidden md:grid items-center gap-4
             px-3 py-2 rounded-[20px]
-            bg-[#FFDBBF1A]
-            backdrop-blur-[4px]
-            border border-[#FFDBBF1A]/20
+            bg-[#1C1816]/60
+            backdrop-blur-[6px]
+            border border-white/5
             grid-cols-4 md:auto-cols-fr
           "
         >
@@ -112,24 +110,17 @@ export default function Navbar() {
                 href={link.href}
                 className="relative flex items-center justify-center font-bricolage text-[18px]"
               >
-                {/* 🔥 FIXED ACTIVE BG (No active-border class) */}
-                <span
-                  className={`
-                    absolute inset-0 rounded-[10px] transition-all duration-300
-                    ${isActive
-                      ? "bg-gradient-to-br from-[#E2C5B3]/40 to-[#7C6A60]/20"
-                      : ""
-                    }
-                  `}
-                />
+                {/* INNER GLOW LAYER */}
+               
 
+                {/* BUTTON CORE */}
                 <span
                   className={`
                     relative z-10 h-[42px] flex items-center justify-center 
-                    px-[20px] py-[12px] rounded-[10px]
+                    px-[22px] py-[12px] rounded-[12px]
                     ${
                       isActive
-                        ? "text-white bg-[#FFDBBF1A] backdrop-blur-[10px]"
+                        ? "text-white bg-[#C8B2A4]/50 isolate" // ⭐ FIXED (no double-dark layer)
                         : "text-white/70 hover:text-white"
                     }
                   `}
@@ -143,10 +134,10 @@ export default function Navbar() {
 
         {/* ========= DESKTOP RIGHT BUTTONS ========= */}
         <div className="hidden md:flex items-center gap-2">
-          <button className="h-[46px] px-4 rounded-[10px] bg-[#FFDBBF1A] backdrop-blur-[10px] text-white font-bricolage text-[16px]">
+          <button className="h-[46px] px-4 rounded-[10px] bg-[#C8B2A4]/30 backdrop-blur-[10px] text-white font-bricolage text-[16px]">
             Login
           </button>
-          <button className="h-[46px] px-4 rounded-[10px] bg-[#FFDBBF1A] backdrop-blur-[10px] text-white font-bricolage text-[16px]">
+          <button className="h-[46px] px-4 rounded-[10px] bg-[#C8B2A4]/30 backdrop-blur-[10px] text-white font-bricolage text-[16px]">
             Get Started
           </button>
         </div>
