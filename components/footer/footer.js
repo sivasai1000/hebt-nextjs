@@ -5,42 +5,47 @@ import Text from "@/components/common/text";
 
 export default function Footer() {
   return (
-    /* FULL WIDTH — BREAK OUT OF PAGE CONTAINER */
-    <footer className="
-      mt-20 
-      w-screen 
-      relative left-1/2 right-1/2 
-      -ml-[50vw] -mr-[50vw]
-    ">
-      
-      {/* FULL BACKGROUND */}
+    <footer
+      className="
+        mt-20 
+        w-screen 
+        relative left-1/2 right-1/2 
+        -ml-[50vw] -mr-[50vw]
+      "
+    >
       <div className="w-full bg-[#0F0F0E] rounded-[20px] overflow-hidden">
-        
-        {/* CENTERED CONTENT — EQUAL LEFT/RIGHT = 20PX */}
-        <div className="
-          w-full
-          mx-auto 
-          px-20
-          py-10 md:py-12 lg:py-14 
-          flex flex-col 
-          gap-16 
-          relative
-        ">
-          
+        <div
+          className="
+            w-full
+            mx-auto 
+            px-6 sm:px-10 lg:px-20   /* RESPONSIVE PADDING */
+            py-10 md:py-12 lg:py-14 
+            flex flex-col 
+            gap-14 lg:gap-16
+            relative
+          "
+        >
           {/* TOP ROW */}
-          <Box className="relative z-10 flex flex-col sm:flex-row sm:items-start gap-10 sm:gap-16">
-            
-            {/* Logo + Description */}
-            <Box className="flex-1 max-w-sm">
+          <Box
+            className="
+              grid 
+              grid-cols-1 
+              lg:grid-cols-[350px_1fr]
+              gap-12 lg:gap-16
+              relative z-10
+            "
+          >
+            {/* LOGO + DESCRIPTION */}
+            <Box className="max-w-sm">
               <Box className="flex items-center gap-3 mb-4">
                 <img src="/assets/images/hebtai.svg" alt="HEBT AI" />
               </Box>
 
               <Text
                 as="h5"
-                className="!text-[#FFFFFF94] text-[14px] mb-6 max-w-xl leading-[150%]"
+                className="text-[#FFFFFF94] text-[14px] mb-6 leading-[150%]"
               >
-                HEBT AI is a next generation SDLC automation platform that helps
+                HEBT AI is a next-generation SDLC automation platform that helps
                 teams build, test, and deploy applications at lightning speed
                 with enterprise-grade precision.
               </Text>
@@ -54,19 +59,17 @@ export default function Footer() {
               </Box>
             </Box>
 
-            {/* Footer Columns */}
+            {/* FOOTER COLUMNS */}
             <Box
-              className=" 
-                flex-1 
+              className="
                 grid 
                 grid-cols-2 sm:grid-cols-3 lg:grid-cols-4
                 gap-10 
                 text-white 
-                relative z-10
               "
             >
               {/* Platform */}
-              <Box >
+              <Box>
                 <h5 className="text-white font-semibold mb-4">Platform</h5>
                 <ul className="space-y-2 text-[#FFFFFF94] text-sm">
                   <li>AI Code Generation</li>
@@ -115,21 +118,22 @@ export default function Footer() {
             </Box>
           </Box>
 
-          {/* Middle Image */}
-          <Box className="text-center lg:mt-4 py-8">
-            <img 
-              src="/assets/images/footerhebt.svg"  
-              alt="hebt" 
-              className="mx-auto"
+          {/* MIDDLE IMAGE */}
+          <Box className="text-center pt-6">
+            <img
+              src="/assets/images/footerhebt.svg"
+              alt="hebt"
+              className="mx-auto w-[180px] sm:w-[220px]"
             />
           </Box>
 
           {/* BOTTOM ROW */}
           <Box
             className="
-              relative z-10 pt-8
-              flex flex-col sm:flex-row justify-between items-center
+              flex flex-col sm:flex-row 
+              justify-between items-center
               gap-6
+              pt-6
             "
           >
             <span className="text-white/60 text-sm">
@@ -142,7 +146,6 @@ export default function Footer() {
               <a href="#">Cookies Settings</a>
             </Box>
           </Box>
-
         </div>
       </div>
     </footer>
