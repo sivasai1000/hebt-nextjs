@@ -40,19 +40,20 @@ export default function Navbar() {
   return (
     <header className="sticky top-0 w-full z-50 bg-transparent">
       <SectionContainer className="flex items-center justify-between">
-        
+
         {/* ========= MOBILE TOP BAR ========= */}
-        <div className="
-          md:hidden
-          w-full flex items-center justify-between 
-          px-4 py-2
-          rounded-[20px]
-          bg-[#2B2623]/90
-          backdrop-blur-[8px]
-          border border-white/10
-        ">
-          
-          {/* Logo + Text */}
+        <div
+          className="
+            md:hidden
+            w-full flex items-center justify-between 
+            px-4 py-2
+            rounded-[20px]
+            bg-[#2B2623]/90
+            backdrop-blur-[8px]
+            border border-white/10
+          "
+        >
+          {/* Logo */}
           <div className="flex items-center gap-2">
             <Image
               src="/assets/images/hebt-logo.svg"
@@ -104,22 +105,27 @@ export default function Navbar() {
         >
           {links.map((link) => {
             const isActive = activeSection === link.id;
+
             return (
               <a
                 key={link.id}
                 href={link.href}
                 className="relative flex items-center justify-center font-bricolage text-[18px]"
               >
+                {/* 🔥 FIXED ACTIVE BG (No active-border class) */}
                 <span
                   className={`
-                    absolute inset-0 rounded-[10px] p-[1px]
-                    ${isActive ? "active-border" : ""}
+                    absolute inset-0 rounded-[10px] transition-all duration-300
+                    ${isActive
+                      ? "bg-gradient-to-br from-[#E2C5B3]/40 to-[#7C6A60]/20"
+                      : ""
+                    }
                   `}
                 />
 
                 <span
                   className={`
-                    relative z-10 h-[42px] flex items-center justify-center
+                    relative z-10 h-[42px] flex items-center justify-center 
                     px-[20px] py-[12px] rounded-[10px]
                     ${
                       isActive
@@ -144,21 +150,20 @@ export default function Navbar() {
             Get Started
           </button>
         </div>
-
       </SectionContainer>
 
-      {/* ========= MOBILE MENU DROPDOWN ========= */}
+      {/* ========= MOBILE DROPDOWN ========= */}
       {open && (
         <div className="md:hidden absolute top-[100px] left-0 w-full px-4">
-          <div className="
-            w-full rounded-[20px]
-            bg-[#2B2623]/90
-            backdrop-blur-[8px]
-            border border-white/10
-            py-6 flex flex-col items-center gap-6
-          ">
-            
-            {/* NO ACTIVE STYLES ON MOBILE */}
+          <div
+            className="
+              w-full rounded-[20px]
+              bg-[#2B2623]/90
+              backdrop-blur-[8px]
+              border border-white/10
+              py-6 flex flex-col items-center gap-6
+            "
+          >
             {links.map((link) => (
               <a
                 key={link.id}
@@ -188,7 +193,6 @@ export default function Navbar() {
           </div>
         </div>
       )}
-
     </header>
   );
 }
