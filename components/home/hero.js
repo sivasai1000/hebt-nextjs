@@ -1,7 +1,6 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import SectionContainer from "@/components/common/section-container";
 import Text from "@/components/common/text";
 import HeroInput from "./hero-input";
 import Navbar from "../nav/navbar";
@@ -13,105 +12,135 @@ const bgImages = [
   "/assets/images/bg4.svg",
 ];
 
-// ✨ ROTATING PHRASES
 const phrases = [
-  "{ AI Coding Engine }",
-  "{ Product Delivery }",
-  "{ Build & Test Team }",
-  "{ SDLC Automation Team }",
-  "{ Product Launch Team }",
+  "AI Coding Engine",
+  "Product Delivery",
+  "Build & Test Team",
+  "SDLC Automation Team",
+  "Product Launch Team",
 ];
 
 export default function Hero() {
   const [bgIndex, setBgIndex] = useState(0);
-  const [phraseIndex, setPhraseIndex] = useState(0);
 
-  // ✨ Background Image Changer
+  // Typing animation states
+  const [text, setText] = useState("");
+  const [phraseIndex, setPhraseIndex] = useState(0);
+  const [deleting, setDeleting] = useState(false);
+
+  // Background rotation
   useEffect(() => {
     const interval = setInterval(() => {
       setBgIndex((prev) => (prev + 1) % bgImages.length);
-    }, 2000);
+    }, 2500);
     return () => clearInterval(interval);
   }, []);
 
-  // ✨ Text Phrase Changer
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setPhraseIndex((prev) => (prev + 1) % phrases.length);
-    }, 2000);
-    return () => clearInterval(interval);
-  }, []);
+  // Typing Animation Loop
+useEffect(() => {
+  const currentPhrase = phrases[phraseIndex];
+
+  const timeout = setTimeout(() => {
+    if (!deleting) {
+      // typing forward (slow)
+      setText(currentPhrase.slice(0, text.length + 1));
+
+      if (text.length + 1 === currentPhrase.length) {
+        setTimeout(() => setDeleting(true), 2500); // longer pause before delete
+      }
+    } else {
+      // deleting (slow)
+      setText(currentPhrase.slice(0, text.length - 1));
+
+      if (text.length === 0) {
+        setDeleting(false);
+        setPhraseIndex((prev) => (prev + 1) % phrases.length);
+        setText(""); // reset text
+      }
+    }
+  }, deleting ? 110 : 150); // NEW SPEEDS
+
+  return () => clearTimeout(timeout);
+}, [text, deleting, phraseIndex]);
+
 
   return (
     <div
-      className="w-full min-h-screen relative overflow-hidden"
+      className="
+        relative w-full overflow-hidden
+        flex flex-col
+        px-4 sm:px-6 lg:px-8
+      "
       style={{
         backgroundImage: `url(${bgImages[bgIndex]})`,
         backgroundSize: "cover",
         backgroundPosition: "center",
-        backgroundRepeat: "no-repeat",
         transition: "background-image 1s ease-in-out",
       }}
     >
+      <Navbar />
 
-      {/* 🔥 TOP-RIGHT SUN-RAY EFFECT */}
-      <div
-        className="
-          pointer-events-none
-          absolute
-          top-0
-          right-0
-          w-[1400px]
-          h-[1400px]
-          opacity-[0.22]
-          mix-blend-screen
-        "
-        style={{
-          backgroundImage: "url('/assets/images/star.png')",
-          backgroundSize: "cover",
-          backgroundRepeat: "no-repeat",
-          transform: "translate(40%, -40%) rotate(32deg)",
-        }}
-      />
+      <div className="relative z-10 text-center  pb-20">
+        <Text
+          as="h1"
+          className="
+            font-bricolage font-semibold
+            text-[32px] sm:text-[42px] md:text-[56px] lg:text-[72px]
+            leading-tight tracking-[-0.01em]
+            
+          "
+        >
+          Your<br />
 
-      {/* Grid Overlay */}
-      <div className="absolute inset-0 bg-grid-overlay opacity-30 pointer-events-none" />
+          {/* CORRECTED COLOR TEXT — NO BG GRADIENT */}
+          <span className="font-semibold inline-flex justify-center items-center gap-3">
 
-      <SectionContainer sectionClassName="relative z-10 !pt-0 !mt-0 !pb-0 !px-0">
-        <Navbar />
-
-        {/* CONTENT */}
-        <div className="relative z-10 pt-5 pb-28 text-center">
-
-          {/* MAIN HEADING */}
-          <Text as="h1">
-  Your
-  <br />
-
-  <span className="font-semibold inline-block">
-    <span
-      key={phrases[phraseIndex]}
-      className="
-        block
-        !bg-gradient-to-r
-        from-[#2F0800]
-        to-[#FF7254]
-        bg-clip-text
-        text-transparent
-        animate-slide-fade
-      "
-    >
-      {phrases[phraseIndex]}
-    </span>
-  </span>
-
-  <br />
-  That Never Sleeps
-</Text>
+            {/* LEFT BRACE - SOLID COLOR */}
+            <span
+  className="bg-clip-text text-transparent"
+  style={{
+    background: "linear-gradient(270deg, #FFFDF8 0%, rgba(255,231,199,0.5) 100%)",
+    WebkitBackgroundClip: "text"
+  }}
+>
+  {"{"}
+</span>
 
 
-          {/* SUBTEXT */}
-          <p
+            {/* TYPED TEXT - SOLID COLOR */}
+           <span
+  className="
+    typing-cursor 
+    inline-block
+    text-[32px] sm:text-[42px] md:text-[56px] lg:text-[72px]
+    min-w-[50px]
+    bg-clip-text text-transparent
+  "
+  style={{
+    background: "linear-gradient(90deg, #2F0800 0%, #FF7254 100%)",
+    WebkitBackgroundClip: "text"
+  }}
+>
+  {text}
+</span>
+
+            <span
+  className="bg-clip-text text-transparent"
+  style={{
+    background: "linear-gradient(270deg, #FFFDF8 0%, rgba(255,231,199,0.5) 100%)",
+    WebkitBackgroundClip: "text"
+  }}
+>
+  {"}"}
+</span>
+
+
+          </span>
+
+          <br />
+          That Never Sleeps
+        </Text>
+        <p
             className="
               font-geist font-normal
               text-[18px] sm:text-[20px] lg:text-[22px]
@@ -126,9 +155,25 @@ export default function Hero() {
             intelligent SDLC automation platform.
           </p>
 
-          <HeroInput />
-        </div>
-      </SectionContainer>
+        <HeroInput />
+      </div>
+
+      <style>
+        {`
+          .typing-cursor::after {
+            content: '|';
+            margin-left: 4px;
+            animation: cursorBlink 0.7s infinite;
+            color: #FF7254;
+          }
+
+          @keyframes cursorBlink {
+            0% { opacity: 1; }
+            50% { opacity: 0; }
+            100% { opacity: 1; }
+          }
+        `}
+      </style>
     </div>
   );
 }

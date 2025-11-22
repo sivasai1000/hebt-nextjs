@@ -37,14 +37,26 @@ body {
 }
 
 /* Animations */
+/* Orbit animation */
 @keyframes spin-slow {
   from { transform: rotate(0deg); }
   to { transform: rotate(360deg); }
 }
 
 .animate-spin-slow {
-  animation: spin-slow 360s linear infinite;
+  animation: spin-slow 20s linear infinite;
 }
+
+/* Counter-animation to keep icons upright */
+.keep-upright {
+  animation: stay-upright 20s linear infinite;
+}
+
+@keyframes stay-upright {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(-360deg); }
+}
+
 
 @keyframes blink {
   0%, 50% { opacity: 1; }

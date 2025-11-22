@@ -4,7 +4,6 @@ import SectionContainer from "@/components/common/section-container";
 import Text from "@/components/common/text";
 import Image from "next/image";
 
-// icons 
 import icon1 from "@/public/assets/images/cloud.svg";
 import icon2 from "@/public/assets/images/architecture.svg";
 import icon3 from "@/public/assets/images/code.svg";
@@ -53,60 +52,55 @@ const cards = [
 
 export default function TransformSDLC() {
   return (
-    <SectionContainer id="platform">
+    <SectionContainer
+      id="platform"
+      className="max-w-7xl mx-auto px-4 sm:px-6"
+    >
       <div className="md:flex md:items-start md:gap-16 relative">
 
-        {/* LEFT SIDE — Sticky only on desktop */}
+        {/* LEFT SIDE */}
         <div
-  className="
-    w-full
-    md:w-4/12 
-    md:sticky 
-    md:top-24 
-    z-20 
-    pb-4
-  "
->
-  <Text
-    as="h2"
-    className="text-left !mb-2 "
-  >
-    How HEBT AI Transforms{" "}
-    <span className="bg-gradient-to-b from-[#4C1B0A] to-[#B23F18] bg-clip-text text-transparent">
-      your SDLC
-    </span>
-  </Text>
-</div>
+          className="
+            w-full
+            md:max-w-[420px]
+            md:sticky
+            md:top-24
+            pb-4
+            z-20
+          "
+        >
+          <Text
+            as="h2"
+            className="text-left !mb-2"
+          >
+            How HEBT AI Transforms{" "}
+            <span className="bg-gradient-to-b from-[#4C1B0A] to-[#B23F18] bg-clip-text text-transparent">
+              your SDLC
+            </span>
+          </Text>
+        </div>
 
-
-        {/* RIGHT SIDE — Cards */}
-        <div className="md:flex-1 mt-2 md:mt-0 flex flex-col gap-5">
+        {/* RIGHT SIDE CARDS */}
+        <div className="md:flex-1 mt-4 md:mt-0 flex flex-col gap-5">
 
           {cards.map((c, idx) => (
             <div
               key={c.id}
               className="
                 w-full
+                max-w-[720px]
                 bg-[#18191B]
                 border border-white/10
                 rounded-[18px]
                 p-5
                 shadow-[0_0_12px_rgba(0,0,0,0.25)]
-                
-                grid
-                grid-cols-[1fr_80px]  /* LEFT CONTENT | RIGHT NUMBER */
+                grid grid-cols-[1fr_70px]
                 gap-x-4
               "
-              style={{ maxWidth: "790px" }}
             >
-
-              {/* LEFT COLUMN — Icon + Title + Description */}
               <div className="flex flex-col gap-3">
-
-                {/* Icon + Title */}
                 <div className="flex items-center gap-4">
                   <Image src={c.icon} width={48} height={48} alt={c.title} />
-
                   <Text
                     as="h4"
                     className="
@@ -121,28 +115,24 @@ export default function TransformSDLC() {
                   </Text>
                 </div>
 
-                {/* Description */}
                 <Text
                   as="p"
                   className="
-                    !text-left 
-                    text-white/70 
+                    !text-left
+                    text-white/70
                     text-[15px]
                     leading-[1.4]
                   "
                 >
                   {c.desc}
                 </Text>
-
               </div>
 
-              {/* RIGHT COLUMN — Number */}
               <div className="flex items-start justify-end">
                 <Text as="number">
                   {String(idx + 1).padStart(2, "0")}
                 </Text>
               </div>
-
             </div>
           ))}
 

@@ -7,17 +7,13 @@ export default function WhyTeamsChoose() {
     <SectionContainer id="solutions">
       {/* TITLE */}
       <div className="text-center">
-  <Text
-    as="h2"
-    
-  >
-    Why Engineering Teams{" "}
-    <span className="bg-gradient-to-b from-[#4C1B0A] to-[#B23F18] bg-clip-text text-transparent">
-      Choose HEBT AI
-    </span>
-  </Text>
-</div>
-
+        <Text as="h2">
+          Why Engineering Teams{" "}
+          <span className="bg-gradient-to-b from-[#4C1B0A] to-[#B23F18] bg-clip-text text-transparent">
+            Choose HEBT AI
+          </span>
+        </Text>
+      </div>
 
       {/* ROW 1 — BIG CARDS */}
       <div className="mt-12 grid grid-cols-1 lg:grid-cols-2 gap-8">
@@ -36,7 +32,7 @@ export default function WhyTeamsChoose() {
         />
       </div>
 
-      {/* ROW 2 — SMALLER 300PX IMAGES */}
+      {/* ROW 2 — SMALLER CARDS */}
       <div className="mt-8 grid grid-cols-1 md:grid-cols-3 gap-8">
         <Card
           img="/assets/images/chart.svg"
@@ -64,43 +60,57 @@ export default function WhyTeamsChoose() {
 }
 
 /* CARD COMPONENT */
-function Card({ img, title, desc }) {
+function Card({ img, title, desc, big, small }) {
   return (
     <div
       className="
-      relative
-      h-[476px]
-      bg-[#101010]
-      rounded-[20px]
-      overflow-hidden
-      border border-transparent
-      [border-image:linear-gradient(237.53deg,rgba(49,49,49,0.3)_1.62%,rgba(255,168,140,0.12)_98.37%)_1]
-      flex flex-col justify-end
-    "
+        rounded-[20px]
+        p-[1px]
+        bg-[linear-gradient(237.53deg,rgba(49,49,49,0.3)_1.62%,rgba(255,168,140,0.12)_98.37%)]
+      "
     >
+      <div
+        className={`
+          relative
+          bg-[#101010]
+          rounded-[20px]
+          overflow-hidden
+          flex flex-col justify-end
 
-      {/* TOP IMAGE - FULL WIDTH - FIXED HEIGHT */}
-      <div className="absolute top-0 left-0 right-0  h-[300px] mt-4 ">
-        <Image
-          src={img}
-          alt={title}
-          fill
-          className="object-contain "
-        />
+          ${big ? "h-[400px] sm:h-[420px] md:h-[400px]" : ""}
+          ${small ? "h-[476px]" : ""}
+        `}
+      >
+        {/* TOP IMAGE */}
+        <div
+          className={`
+            absolute top-0 left-0 right-0
+            ${big ? "h-[240px] sm:h-[260px]" : ""}
+            ${small ? "h-[300px]" : ""}
+            mt-4
+          `}
+        >
+          <Image
+            src={img}
+            alt={title}
+            fill
+            className="object-contain"
+          />
 
-        {/* FADE TO BLACK LIKE YOUR SCREENSHOT */}
-        <div className="absolute bottom-0 left-0 right-0 h-[120px] bg-gradient-to-b from-transparent to-[#101010]" />
-      </div>
+          {/* GRADIENT OVERLAY */}
+          <div className="absolute bottom-0 left-0 right-0 h-[120px] bg-gradient-to-b from-transparent to-[#101010]" />
+        </div>
 
-      {/* CONTENT */}
-      <div className="relative z-10 p-6">
-        <p className="text-white font-semibold text-[24px] leading-[30px]">
-          {title}
-        </p>
+        {/* CONTENT */}
+        <div className="relative z-10 p-6 mt-auto">
+          <p className="text-white font-semibold text-[22px] sm:text-[24px] leading-[30px]">
+            {title}
+          </p>
 
-        <p className="mt-3 text-white/60 text-[16px] leading-[26px]">
-          {desc}
-        </p>
+          <p className="mt-3 text-white/60 text-[15px] sm:text-[16px] leading-[24px]">
+            {desc}
+          </p>
+        </div>
       </div>
     </div>
   );

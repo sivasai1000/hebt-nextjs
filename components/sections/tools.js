@@ -41,8 +41,8 @@ export default function WorksWithTools() {
           <Image
             src="/assets/images/hebt.svg"
             alt="center"
-            width={190}
-            height={190}
+            width={160}
+            height={160}
             className="w-full h-full"
           />
         </div>
@@ -103,7 +103,7 @@ function Ring({ size, className }) {
         marginTop: -(size / 2),
       }}
     >
-      <div className="w-full h-full border border-white/15 rounded-[40%]" />
+      <div className="w-full h-full border border-white/40 rounded-[40%]" />
     </div>
   );
 }
@@ -134,7 +134,7 @@ function ResponsiveAngleIcon({ src, angle, baseRadius, isClickable = false }) {
         src={src}
         angle={angle}
         radius={baseRadius}
-        size={76}
+        size={75}
         className="hidden md:block"
         isClickable={isClickable}
       />
@@ -160,16 +160,19 @@ function AngleIcon({ src, angle, radius, size, className, isClickable }) {
         transform: "translate(-50%, -50%)",
       }}
     >
-      <Image
-        src={finalSrc}
-        width={size}
-        height={size}
-        alt={src}
-        className="cursor-pointer"
-        onMouseEnter={() => setHover(true)}
-        onMouseLeave={() => setHover(false)}
-        onClick={() => isClickable && setClicked(!clicked)}
-      />
+      {/* COUNTER ROTATION LAYER */}
+      <div className="keep-upright">
+        <Image
+          src={finalSrc}
+          width={size}
+          height={size}
+          alt={src}
+          className="cursor-pointer"
+          onMouseEnter={() => setHover(true)}
+          onMouseLeave={() => setHover(false)}
+          onClick={() => isClickable && setClicked(!clicked)}
+        />
+      </div>
     </div>
   );
 }
