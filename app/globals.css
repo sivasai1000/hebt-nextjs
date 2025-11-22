@@ -35,6 +35,10 @@ body {
   color: var(--foreground);
   font-family: var(--font-geist-sans);
 }
+html, body {
+  overflow-x: hidden !important;
+  width: 100%;
+}
 
 /* Animations */
 /* Orbit animation */
