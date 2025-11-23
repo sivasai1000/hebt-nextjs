@@ -3,6 +3,7 @@
 import { useState, useEffect } from "react";
 import SectionContainer from "@/components/common/section-container";
 import Image from "next/image";
+import clsx from "clsx";
 
 export default function Navbar() {
   const [open, setOpen] = useState(false);
@@ -91,49 +92,42 @@ export default function Navbar() {
         </div>
 
         {/* ========= DESKTOP NAVIGATION ========= */}
-        <nav
+       <nav
           className="
-            hidden md:grid items-center gap-4
-            px-3 py-2 rounded-[20px]
-            bg-[#1C1816]/60
+            hidden md:flex items-center gap-2
+            px-2 py-2 rounded-[20px]
+            bg-[#FFDBBF1A]
             backdrop-blur-[6px]
-            border border-white/5
-            grid-cols-4 md:auto-cols-fr
+            border border-white/10
           "
         >
-          {links.map((link) => {
-            const isActive = activeSection === link.id;
-
-            return (
-              <a
-                key={link.id}
-                href={link.href}
-                className="relative flex items-center justify-center font-bricolage text-[18px]"
+          {links.map((link) => (
+            <a
+              key={link.id}
+              href={link.href}
+              className="flex items-center justify-center border-none"
+            >
+              <span
+                className={clsx(
+                  "flex items-center justify-center h-[42px] px-[22px] py-[12px] rounded-[10px] text-[18px] font-bricolage",
+                  ! (activeSection === link.id) &&
+                    "text-white/70 hover:text-white",
+                  activeSection === link.id && [
+                    "text-white",
+                    "bg-[#FFDBBF1A]/50",
+                    "isolate",
+                   
+                  ]
+                )}
               >
-                {/* INNER GLOW LAYER */}
-               
-
-                {/* BUTTON CORE */}
-                <span
-                  className={`
-                    relative z-10 h-[42px] flex items-center justify-center 
-                    px-[22px] py-[12px] rounded-[12px]
-                    ${
-                      isActive
-                        ? "text-white bg-[#C8B2A4]/50 isolate" // ⭐ FIXED (no double-dark layer)
-                        : "text-white/70 hover:text-white"
-                    }
-                  `}
-                >
-                  {link.label}
-                </span>
-              </a>
-            );
-          })}
+                {link.label}
+              </span>
+            </a>
+          ))}
         </nav>
 
         {/* ========= DESKTOP RIGHT BUTTONS ========= */}
-        <div className="hidden md:flex items-center gap-2">
+        <div className="hidden md:flex items-center gap-4">
           <button className="h-[46px] px-4 rounded-[10px] bg-[#C8B2A4]/30 backdrop-blur-[10px] text-white font-bricolage text-[16px]">
             Login
           </button>

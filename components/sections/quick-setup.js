@@ -96,7 +96,7 @@ hebt deploy --auto-configure
         </div>
 
         {/* Body */}
-        <div className="p-6 md:p-10">
+        <div className="p-6 md:p-10 ">
           <h2
             className="
               text-center font-[var(--font-bricolage)] font-semibold

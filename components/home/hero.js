@@ -6,10 +6,10 @@ import HeroInput from "./hero-input";
 import Navbar from "../nav/navbar";
 
 const bgImages = [
-  "/assets/images/bg5.png",
-  "/assets/images/bg2.svg",
-  "/assets/images/bg3.svg",
-  "/assets/images/bg4.svg",
+  "/assets/images/bg5.svg",
+  "/assets/images/bg6.svg",
+  "/assets/images/bg7.svg",
+  "/assets/images/bg8.svg",
 ];
 
 const phrases = [
@@ -65,19 +65,20 @@ useEffect(() => {
 
 
   return (
-    <div
-      className="
-        relative w-full overflow-hidden
-        flex flex-col
-        px-4 sm:px-6 lg:px-8
-      "
-      style={{
-        backgroundImage: `url(${bgImages[bgIndex]})`,
-        backgroundSize: "cover",
-        backgroundPosition: "center",
-        transition: "background-image 1s ease-in-out",
-      }}
-    >
+   <div
+  className="
+    relative w-full overflow-hidden
+    flex flex-col
+    px-4 sm:px-6 lg:px-8
+   
+    bg-cover bg-center bg-no-repeat
+  "
+  style={{
+    backgroundImage: `url(${bgImages[bgIndex]})`,
+    transition: "background-image 1s ease-in-out",
+  }}
+>
+
       <Navbar />
 
       <div className="relative z-10 text-center  pb-20">
