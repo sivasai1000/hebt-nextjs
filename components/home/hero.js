@@ -32,7 +32,7 @@ export default function Hero() {
   useEffect(() => {
     const interval = setInterval(() => {
       setBgIndex((prev) => (prev + 1) % bgImages.length);
-    }, 2500);
+    }, 2000);
     return () => clearInterval(interval);
   }, []);
 
@@ -78,10 +78,8 @@ useEffect(() => {
     transition: "background-image 1s ease-in-out",
   }}
 >
-
       <Navbar />
-
-      <div className="relative z-10 text-center  pb-20">
+      <div className="relative z-10 text-center pt-10 lg:pt-20 pb-20">
         <Text
           as="h1"
           className="

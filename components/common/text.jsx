@@ -30,7 +30,7 @@ const baseStyles = {
 
   h4: `
     font-mono font-semibold
-    text-[18px] sm:text-[18px] md:text-[24px] lg:text-[28px]
+    text-[17px] sm:text-[17px] md:text-[24px] lg:text-[28px]
     leading-[110%] tracking-[-0.02em]
     text-[#CC3B1D] text-center mx-auto mb-4
   `,

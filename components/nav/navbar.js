@@ -40,14 +40,13 @@ export default function Navbar() {
 
   return (
     <header className="sticky top-0 w-full z-50 bg-transparent">
-      <SectionContainer className="flex items-center justify-between">
+      <div className="flex items-center justify-between mt-6  px-10 ">
 
-        {/* ========= MOBILE TOP BAR ========= */}
         <div
           className="
           md:hidden
           w-full flex items-center justify-between 
-          px-4 py-2
+          px-4 
           rounded-[20px]
           bg-[#2B2623]/90
           backdrop-blur-[8px]
@@ -80,7 +79,7 @@ export default function Navbar() {
         </div>
 
         {/* ========= DESKTOP LEFT LOGO ========= */}
-        <div className="hidden md:flex items-center gap-3">
+        <div className="hidden md:flex items-center gap-3 ">
           <div className="relative w-[150px] h-[40px] md:w-[180px] md:h-[54px]">
             <Image
               src="/assets/images/hebt-logo.svg"
@@ -127,15 +126,17 @@ export default function Navbar() {
         </nav>
 
         {/* ========= DESKTOP RIGHT BUTTONS ========= */}
-        <div className="hidden md:flex items-center gap-4">
-          <button className="h-[46px] px-4 rounded-[10px] bg-[#C8B2A4]/30 backdrop-blur-[10px] text-white font-bricolage text-[16px]">
-            Login
-          </button>
-          <button className="h-[46px] px-4 rounded-[10px] bg-[#C8B2A4]/30 backdrop-blur-[10px] text-white font-bricolage text-[16px]">
-            Get Started
-          </button>
-        </div>
-      </SectionContainer>
+       <div className="hidden md:flex items-center gap-6">
+  <button className="h-[46px] px-4 rounded-[10px] bg-[#FFDBBF1A] backdrop-blur-[10px] text-white font-bricolage text-[16px] border border-b-0 border-[#FFDFCD1A]">
+    Login
+  </button>
+
+  <button className="h-[46px] px-4 rounded-[10px] bg-[#FFDBBF1A] backdrop-blur-[10px] text-white font-bricolage text-[16px] border border-[#FFDFCD1C]">
+    Get Started
+  </button>
+</div>
+
+      </div>
 
       {/* ========= MOBILE DROPDOWN ========= */}
       {open && (

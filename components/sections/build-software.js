@@ -14,7 +14,6 @@ export default function BuildSoftware() {
         bg-[#0D0705]
       "
     >
-      {/* DOT BACKGROUND */}
       <Box
         className="
           absolute inset-0
@@ -26,16 +25,12 @@ export default function BuildSoftware() {
           opacity-60
         "
       />
-
-      {/* BOTTOM GRADIENT FADE */}
       <Box
         className="
           absolute inset-x-0 bottom-0 h-1/3
           bg-gradient-to-b from-transparent to-[#0D0705]
         "
       />
-
-      {/* CONTENT WRAPPER */}
       <Box className="relative z-10 max-w-4xl mx-auto text-center px-4">
 
         {/* TITLE */}

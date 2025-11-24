@@ -45,7 +45,7 @@ const cards = [
   {
     id: 6,
     title: "Maintenance & enhancement",
-    desc: "Smart monitoring, bug fixes, performance boosts, and proactive security updates powered by intelligent AI.",
+    desc: "Smart, continuous monitoring with automated bug fixes, performance boosts, feature upgrades, and proactive security updates, all powered by intelligent system health management.",
     icon: icon6,
   },
 ];
@@ -56,88 +56,108 @@ export default function TransformSDLC() {
       id="platform"
       className="max-w-7xl mx-auto px-4 sm:px-6"
     >
-      <div className="md:flex md:items-start md:gap-16 relative">
+     <div className="flex flex-col md:flex-row md:items-start gap-10 md:gap-28 relative">
 
-        {/* LEFT SIDE */}
-        <div
+
+  {/* LEFT SIDE */}
+  <div
+    className="
+      w-full
+      md:w-auto
+      md:max-w-[420px]
+      md:sticky
+      md:top-24
+      pb-4
+      z-20
+    "
+  >
+    <Text
+      as="h2"
+      className="text-left !mb-2"
+    >
+      How HEBT AI Transforms{" "}
+      <span className="bg-gradient-to-b from-[#4C1B0A] to-[#B23F18] bg-clip-text text-transparent">
+        your SDLC
+      </span>
+    </Text>
+  </div>
+
+  {/* RIGHT SIDE CARDS */}
+  <div className="md:flex-1 flex flex-col gap-5">
+
+  {cards.map((c, idx) => (
+  <div
+    key={c.id}
+    className="
+      w-full
+      max-w-[720px]
+      relative
+      bg-[#18191B]
+      border border-white/10
+      rounded-[18px]
+      p-5
+      shadow-[0_0_12px_rgba(0,0,0,0.25)]
+
+      grid grid-cols-1
+      md:grid-cols-[1fr_120px]
+      gap-x-4
+    "
+  >
+    {/* MOBILE: absolute number inside card */}
+    <Text
+      className="
+        absolute top-3 right-4
+        md:hidden
+        text-[22px] text-white/10
+      "
+      as="number"
+    >
+      {String(idx + 1).padStart(2, "0")}
+    </Text>
+
+    {/* LEFT CONTENT */}
+    <div className="flex flex-col gap-3">
+      <div className="flex items-center gap-4">
+        <Image src={c.icon} width={48} height={48} alt={c.title} />
+        <Text
+          as="h4"
           className="
-            w-full
-            md:max-w-[420px]
-            md:sticky
-            md:top-24
-            pb-4
-            z-20
+            !text-left
+            !m-0
+            !leading-[1.1]
+            !font-semibold
+            text-[#CC3B1D]
           "
         >
-          <Text
-            as="h2"
-            className="text-left !mb-2"
-          >
-            How HEBT AI Transforms{" "}
-            <span className="bg-gradient-to-b from-[#4C1B0A] to-[#B23F18] bg-clip-text text-transparent">
-              your SDLC
-            </span>
-          </Text>
-        </div>
-
-        {/* RIGHT SIDE CARDS */}
-        <div className="md:flex-1 mt-4 md:mt-0 flex flex-col gap-5">
-
-          {cards.map((c, idx) => (
-            <div
-              key={c.id}
-              className="
-                w-full
-                max-w-[720px]
-                bg-[#18191B]
-                border border-white/10
-                rounded-[18px]
-                p-5
-                shadow-[0_0_12px_rgba(0,0,0,0.25)]
-                grid grid-cols-[1fr_70px]
-                gap-x-4
-              "
-            >
-              <div className="flex flex-col gap-3">
-                <div className="flex items-center gap-4">
-                  <Image src={c.icon} width={48} height={48} alt={c.title} />
-                  <Text
-                    as="h4"
-                    className="
-                      !text-left
-                      !m-0
-                      !leading-[1.1]
-                      !font-semibold
-                      text-[#CC3B1D]
-                    "
-                  >
-                    {c.title}
-                  </Text>
-                </div>
-
-                <Text
-                  as="p"
-                  className="
-                    !text-left
-                    text-white/70
-                    text-[15px]
-                    leading-[1.4]
-                  "
-                >
-                  {c.desc}
-                </Text>
-              </div>
-
-              <div className="flex items-start justify-end">
-                <Text as="number">
-                  {String(idx + 1).padStart(2, "0")}
-                </Text>
-              </div>
-            </div>
-          ))}
-
-        </div>
+          {c.title}
+        </Text>
       </div>
+
+      <Text
+        as="p"
+        className="
+          !text-left
+          text-white/70
+          text-[15px]
+          leading-[1.4]
+        "
+      >
+        {c.desc}
+      </Text>
+    </div>
+
+    {/* DESKTOP RIGHT NUMBER */}
+    <div className="hidden md:flex items-start justify-end ml-2">
+      <Text as="number">
+        {String(idx + 1).padStart(2, "0")}
+      </Text>
+    </div>
+  </div>
+))}
+
+  </div>
+</div>
+
     </SectionContainer>
   );
 }

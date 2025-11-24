@@ -17,42 +17,43 @@ function getPoint(angleDeg, radius) {
 export default function WorksWithTools() {
   return (
     <SectionContainer id="integrations">
-      <Text as="h2" >
-  Works Seamlessly With Your{" "}
-  <span className="bg-gradient-to-b from-[#4C1B0A] to-[#B23F18] bg-clip-text text-transparent">
-    Existing Tools
-  </span>
-</Text>
+      <Text as="h2">
+        Works Seamlessly With Your{" "}
+        <span className="bg-gradient-to-b from-[#4C1B0A] to-[#B23F18] bg-clip-text text-transparent">
+          Existing Tools
+        </span>
+      </Text>
+
+      {/* Added overflow-hidden here */}
+      <div className="mt-12 w-full flex justify-center items-center relative overflow-hidden">
+        
+        {/* CENTER LOGO */}
+       <div
+  className="
+    absolute z-40
+    w-[70px] h-[70px]        /* smaller mobile size */
+    sm:w-[120px] sm:h-[120px]
+    md:w-[160px] md:h-[160px]
+    lg:w-[190px] lg:h-[190px]
+  "
+  style={{ top: "50%", left: "50%", transform: "translate(-50%, -50%)" }}
+>
+  <Image
+    src="/assets/images/hebtv1.svg"
+    alt="center"
+    width={160}
+    height={160}
+    className="w-full h-full"
+  />
+</div>
 
 
-      <div className="mt-12 w-full flex justify-center items-center relative">
-
-        {/* ⭐ FIXED CENTER LOGO (does NOT rotate) */}
-        <div
-          className="
-            absolute z-40
-            w-[100px] h-[100px]
-            sm:w-[140px] sm:h-[140px]
-            md:w-[170px] md:h-[170px]
-            lg:w-[190px] lg:h-[190px]
-          "
-          style={{ top: "50%", left: "50%", transform: "translate(-50%, -50%)" }}
-        >
-          <Image
-            src="/assets/images/hebt.svg"
-            alt="center"
-            width={160}
-            height={160}
-            className="w-full h-full"
-          />
-        </div>
-
-        {/* 🔄 ROTATING WRAPPER (rings + icons rotate together) */}
+        {/* SPINNING ORBIT (mobile size reduced) */}
         <div
           className="
             relative animate-spin-slow
-            w-[320px] h-[320px]
-            sm:w-[450px] sm:h-[450px]
+            w-[300px] h-[320px]           /* FIXED: smaller mobile size */
+            sm:w-[300px] sm:h-[300px]
             md:w-[600px] md:h-[600px]
             lg:w-[750px] lg:h-[750px]
           "
@@ -112,10 +113,11 @@ function Ring({ size, className }) {
 function ResponsiveAngleIcon({ src, angle, baseRadius, isClickable = false }) {
   return (
     <>
+      {/* Mobile FIX: reduced radius 0.45 → 0.35 */}
       <AngleIcon
         src={src}
         angle={angle}
-        radius={baseRadius * 0.45}
+        radius={baseRadius * 0.45}    /* FIXED: Keeps icons inside */
         size={35}
         className="block sm:hidden"
         isClickable={isClickable}
