@@ -28,24 +28,39 @@ export default function WorksWithTools() {
       <div className="mt-12 w-full flex justify-center items-center relative overflow-hidden">
         
         {/* CENTER LOGO */}
-       <div
+ <div
   className="
     absolute z-40
-    w-[70px] h-[70px]        /* smaller mobile size */
-    sm:w-[120px] sm:h-[120px]
-    md:w-[160px] md:h-[160px]
-    lg:w-[190px] lg:h-[190px]
+    w-[70px] h-[70px]
+    sm:w-[100px] sm:h-[100px]
+    md:w-[130px] md:h-[130px]
+    lg:w-[160px] lg:h-[160px]
+    rounded-[32px]
+    overflow-hidden
+    backdrop-blur-[12px]
   "
-  style={{ top: "50%", left: "50%", transform: "translate(-50%, -50%)" }}
+  style={{
+    top: "50%",
+    left: "50%",
+    transform: "translate(-50%, -50%)",
+   borderRadius:"51px", // slight background helps blur
+   boxShadow: `
+      0px -16px 16.4px 0px #FFAA8D1A inset,
+      0px -29px 57.2px 0px #A354394D,
+      0px 34px 70px 0px #A354394D
+    `,
+    backdropFilter: "blur(12px)"
+  }}
 >
   <Image
-    src="/assets/images/hebtv1.svg"
+    src="/assets/images/hebtv3.svg"
     alt="center"
-    width={160}
-    height={160}
+    width={190}
+    height={190}
     className="w-full h-full"
   />
 </div>
+
 
 
         {/* SPINNING ORBIT (mobile size reduced) */}
