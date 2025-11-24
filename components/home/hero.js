@@ -85,8 +85,7 @@ useEffect(() => {
           className="
             font-bricolage font-semibold
             text-[32px] sm:text-[42px] md:text-[56px] lg:text-[72px]
-            leading-tight tracking-[-0.01em]
-            
+            leading-tight tracking-[-0.01em] 
           "
         >
           Your<br />
