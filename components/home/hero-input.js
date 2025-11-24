@@ -25,10 +25,14 @@ export default function HeroInput({
 "
 
   style={{
-    borderImageSource:
-      "linear-gradient(149.04deg, #FFC676 1.72%, rgba(255,191,118,0) 48.87%), linear-gradient(0deg, rgba(253,253,253,0.05), rgba(253,253,253,0.05))",
-    borderImageSlice: 1,
-  }}
+  border: "1px solid transparent",
+  borderImageSource:
+    "linear-gradient(263.39deg, #FFC676 4.26%, rgba(255,191,118,0) 55.19%), linear-gradient(0deg, rgba(253,253,253,0.05), rgba(253,253,253,0.05))",
+  borderImageSlice: 1,
+  borderImageRepeat: "stretch",   // ← prevents sharp edges
+  borderRadius: "15px",           // ← required when using border-image
+}}
+
 >
 
 

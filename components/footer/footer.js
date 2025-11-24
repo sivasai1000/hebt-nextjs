@@ -119,13 +119,21 @@ export default function Footer() {
           </Box>
 
           {/* MIDDLE IMAGE */}
-          <Box className="text-center pt-6">
-            <img
-              src="/assets/images/footerhebt.svg"
-              alt="hebt"
-              className="mx-auto w-[180px] sm:w-[220px]"
-            />
-          </Box>
+     <div className="text-center pt-6">
+  <img
+    src="/assets/images/footerhebt.svg"
+    alt="hebt"
+    className="mx-auto"
+    style={{
+      width: "763px",
+      height: "200px",
+      opacity: 1,
+      transform: "rotate(0deg)",
+    }}
+  />
+</div>
+
+
 
           {/* BOTTOM ROW */}
           <Box
