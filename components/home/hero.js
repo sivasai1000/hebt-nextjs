@@ -22,11 +22,11 @@ const phrases = [
 
 export default function Hero() {
   const [bgIndex, setBgIndex] = useState(0);
-
   const [text, setText] = useState("");
   const [phraseIndex, setPhraseIndex] = useState(0);
   const [deleting, setDeleting] = useState(false);
 
+  // Background crossfade timer
   useEffect(() => {
     const interval = setInterval(() => {
       setBgIndex((prev) => (prev + 1) % bgImages.length);
@@ -34,56 +34,64 @@ export default function Hero() {
     return () => clearInterval(interval);
   }, []);
 
-  // Typing Animation Loop
-useEffect(() => {
-  const currentPhrase = phrases[phraseIndex];
+  // Preload images (removes flicker)
+  useEffect(() => {
+    bgImages.forEach((src) => {
+      const img = new Image();
+      img.src = src;
+    });
+  }, []);
 
-  const timeout = setTimeout(() => {
-    if (!deleting) {
-      // typing forward (slow)
-      setText(currentPhrase.slice(0, text.length + 1));
+  // Typing Animation
+  useEffect(() => {
+    const currentPhrase = phrases[phraseIndex];
 
-      if (text.length + 1 === currentPhrase.length) {
-        setTimeout(() => setDeleting(true), 2500); // longer pause before delete
+    const timeout = setTimeout(() => {
+      if (!deleting) {
+        setText(currentPhrase.slice(0, text.length + 1));
+
+        if (text.length + 1 === currentPhrase.length) {
+          setTimeout(() => setDeleting(true), 2500);
+        }
+      } else {
+        setText(currentPhrase.slice(0, text.length - 1));
+
+        if (text.length === 0) {
+          setDeleting(false);
+          setPhraseIndex((prev) => (prev + 1) % phrases.length);
+        }
       }
-    } else {
-      // deleting (slow)
-      setText(currentPhrase.slice(0, text.length - 1));
+    }, deleting ? 110 : 150);
 
-      if (text.length === 0) {
-        setDeleting(false);
-        setPhraseIndex((prev) => (prev + 1) % phrases.length);
-        setText(""); // reset text
-      }
-    }
-  }, deleting ? 110 : 150); // NEW SPEEDS
-
-  return () => clearTimeout(timeout);
-}, [text, deleting, phraseIndex]);
-
+    return () => clearTimeout(timeout);
+  }, [text, deleting, phraseIndex]);
 
   return (
-   <div
-  className="
-    relative w-full overflow-hidden
-    flex flex-col
-    px-4 sm:px-6 lg:px-8
-   
-    bg-cover bg-center bg-no-repeat
-  "
-  style={{
-    backgroundImage: `url(${bgImages[bgIndex]})`,
-    transition: "background-image 1s ease-in-out",
-  }}
->
+    <div className="relative w-full overflow-hidden flex flex-col px-4 sm:px-6 lg:px-8">
+
+      {/* BACKGROUND CROSSFADE LAYER */}
+      <div className="absolute inset-0 z-0">
+        {bgImages.map((src, idx) => (
+          <img
+            key={idx}
+            src={src}
+            className={`
+              absolute inset-0 w-full h-full object-cover transition-opacity duration-1000
+              ${idx === bgIndex ? "opacity-100" : "opacity-0"}
+            `}
+          />
+        ))}
+      </div>
+
       <Navbar />
+
       <div className="relative z-10 text-center pt-10 lg:pt-20 pb-20">
         <Text
           as="h1"
           className="
             font-bricolage font-semibold
             text-[32px] sm:text-[42px] md:text-[56px] lg:text-[72px]
-            leading-tight tracking-[-0.01em] 
+            leading-tight tracking-[-0.01em]
           "
         >
           Your<br />
@@ -91,61 +99,64 @@ useEffect(() => {
           <span className="font-semibold inline-flex justify-center items-center gap-3">
 
             <span
-  className="bg-clip-text text-transparent"
-  style={{
-    background: "linear-gradient(270deg, #FFFDF8 0%, rgba(255,231,199,0.5) 100%)",
-    WebkitBackgroundClip: "text"
-  }}
->
-  {"{"}
-</span>
-
-           <span
-  className="
-    typing-cursor 
-    inline-block
-    text-[32px] sm:text-[42px] md:text-[56px] lg:text-[72px]
-    min-w-[50px]
-    bg-clip-text text-transparent
-  "
-  style={{
-    background: "linear-gradient(90deg, #2F0800 0%, #FF7254 100%)",
-    WebkitBackgroundClip: "text"
-  }}
->
-  {text}
-</span>
+              className="bg-clip-text text-transparent"
+              style={{
+                background:
+                  "linear-gradient(270deg, #FFFDF8 0%, rgba(255,231,199,0.5) 100%)",
+                WebkitBackgroundClip: "text",
+              }}
+            >
+              {"{"}
+            </span>
 
             <span
-  className="bg-clip-text text-transparent"
-  style={{
-    background: "linear-gradient(270deg, #FFFDF8 0%, rgba(255,231,199,0.5) 100%)",
-    WebkitBackgroundClip: "text"
-  }}
->
-  {"}"}
-</span>
+              className="
+              typing-cursor
+              inline-block
+              text-[32px] sm:text-[42px] md:text-[56px] lg:text-[72px]
+              min-w-[50px]
+              bg-clip-text text-transparent
+            "
+              style={{
+                background:
+                  "linear-gradient(90deg, #2F0800 0%, #FF7254 100%)",
+                WebkitBackgroundClip: "text",
+              }}
+            >
+              {text}
+            </span>
 
-
+            <span
+              className="bg-clip-text text-transparent"
+              style={{
+                background:
+                  "linear-gradient(270deg, #FFFDF8 0%, rgba(255,231,199,0.5) 100%)",
+                WebkitBackgroundClip: "text",
+              }}
+            >
+              {"}"}
+            </span>
           </span>
 
           <br />
           That Never Sleeps
         </Text>
+
         <p
-            className="
-              font-geist font-normal
-              text-[18px] sm:text-[20px] lg:text-[22px]
-              leading-[30px]
-              text-center text-[#FFFDF8] opacity-60
-              mx-auto mt-4 mb-8
-              lg:w-[987px]
-            "
-          >
-            From proposal to deployment, HEBT AI transforms your ideas into production-ready
-            applications in record time. Experience the future of software development with our
-            intelligent SDLC automation platform.
-          </p>
+          className="
+            font-geist font-normal
+            text-[18px] sm:text-[20px] lg:text-[22px]
+            leading-[30px]
+            text-center text-[#FFFDF8] opacity-60
+            mx-auto mt-4 mb-8
+            lg:w-[987px]
+          "
+        >
+          From proposal to deployment, HEBT AI transforms your ideas into
+          production-ready applications in record time. Experience the future
+          of software development with our intelligent SDLC automation
+          platform.
+        </p>
 
         <HeroInput />
       </div>
