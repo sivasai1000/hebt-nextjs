@@ -4,16 +4,20 @@ import Text from "@/components/common/text";
 
 export default function WhyTeamsChoose() {
   return (
-    <SectionContainer id="solutions">
+    <SectionContainer id="solutions " sectionClassName="border-t-1 mt-8 border-[#12100F]">
       {/* TITLE */}
-      <div className="text-center">
-        <Text as="h2">
-          Why Engineering Teams{" "}
-          <span className="bg-gradient-to-b from-[#4C1B0A] to-[#B23F18] bg-clip-text text-transparent">
-            Choose HEBT AI
-          </span>
-        </Text>
-      </div>
+     <div className="relative flex justify-center mt-4">
+       {/* ORANGE GLOW BACKGROUND */} 
+       <div className="absolute w-full lg:w-[800px] h-[280px] -top-6 pointer-events-none"
+        style={{ 
+          background: "radial-gradient(ellipse, rgba(210,69,22,0.35) 0%, rgba(210,69,22,0.12) 60%, rgba(210,69,22,0) 100%)", 
+          filter: "blur(90px)", opacity: 0.9, }} /> 
+          <Text as="h2" className="text-center relative z-10"> 
+            Why Engineering Teams{" "}
+             <span className="bg-gradient-to-b from-[#4C1B0A] to-[#B23F18] bg-clip-text text-transparent">
+               Choose HEBT AI </span> 
+               </Text> 
+               </div>
 
       {/* ROW 1 — BIG CARDS */}
       <div className="mt-12 grid grid-cols-1 lg:grid-cols-2 gap-8">
