@@ -23,12 +23,10 @@ const phrases = [
 export default function Hero() {
   const [bgIndex, setBgIndex] = useState(0);
 
-  // Typing animation states
   const [text, setText] = useState("");
   const [phraseIndex, setPhraseIndex] = useState(0);
   const [deleting, setDeleting] = useState(false);
 
-  // Background rotation
   useEffect(() => {
     const interval = setInterval(() => {
       setBgIndex((prev) => (prev + 1) % bgImages.length);
@@ -90,10 +88,8 @@ useEffect(() => {
         >
           Your<br />
 
-          {/* CORRECTED COLOR TEXT — NO BG GRADIENT */}
           <span className="font-semibold inline-flex justify-center items-center gap-3">
 
-            {/* LEFT BRACE - SOLID COLOR */}
             <span
   className="bg-clip-text text-transparent"
   style={{
@@ -104,8 +100,6 @@ useEffect(() => {
   {"{"}
 </span>
 
-
-            {/* TYPED TEXT - SOLID COLOR */}
            <span
   className="
     typing-cursor 
@@ -161,15 +155,11 @@ useEffect(() => {
           .typing-cursor::after {
             content: '|';
             margin-left: 4px;
-            animation: cursorBlink 0.7s infinite;
+            
             color: #FF7254;
           }
 
-          @keyframes cursorBlink {
-            0% { opacity: 1; }
-            50% { opacity: 0; }
-            100% { opacity: 1; }
-          }
+        
         `}
       </style>
     </div>
