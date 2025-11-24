@@ -30,7 +30,7 @@ export default function Hero() {
   useEffect(() => {
     const interval = setInterval(() => {
       setBgIndex((prev) => (prev + 1) % bgImages.length);
-    }, 2000);
+    }, 3000);
     return () => clearInterval(interval);
   }, []);
 
@@ -42,29 +42,31 @@ export default function Hero() {
     });
   }, []);
 
-  // Typing Animation
   useEffect(() => {
-    const currentPhrase = phrases[phraseIndex];
+  const currentPhrase = phrases[phraseIndex];
 
-    const timeout = setTimeout(() => {
-      if (!deleting) {
-        setText(currentPhrase.slice(0, text.length + 1));
+  const timeout = setTimeout(() => {
+    if (!deleting) {
+      // typing forward (slow)
+      setText(currentPhrase.slice(0, text.length + 1));
 
-        if (text.length + 1 === currentPhrase.length) {
-          setTimeout(() => setDeleting(true), 2500);
-        }
-      } else {
-        setText(currentPhrase.slice(0, text.length - 1));
-
-        if (text.length === 0) {
-          setDeleting(false);
-          setPhraseIndex((prev) => (prev + 1) % phrases.length);
-        }
+      if (text.length + 1 === currentPhrase.length) {
+        setTimeout(() => setDeleting(true), 2000); // longer pause before delete
       }
-    }, deleting ? 110 : 150);
+    } else {
+      // deleting (slow)
+      setText(currentPhrase.slice(0, text.length - 1));
 
-    return () => clearTimeout(timeout);
-  }, [text, deleting, phraseIndex]);
+      if (text.length === 0) {
+        setDeleting(false);
+        setPhraseIndex((prev) => (prev + 1) % phrases.length);
+        setText(""); // reset text
+      }
+    }
+  }, deleting ? 110 : 150); // NEW SPEEDS
+
+  return () => clearTimeout(timeout);
+}, [text, deleting, phraseIndex]);
 
   return (
     <div className="relative w-full overflow-hidden flex flex-col px-4 sm:px-6 lg:px-8">
@@ -76,7 +78,7 @@ export default function Hero() {
             key={idx}
             src={src}
             className={`
-              absolute inset-0 w-full h-full object-cover transition-opacity duration-1000
+              absolute inset-0 w-full h-full object-cover 
               ${idx === bgIndex ? "opacity-100" : "opacity-0"}
             `}
           />
