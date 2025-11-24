@@ -12,7 +12,7 @@ export default function Page() {
 return (
 <main>
     
-<Hero />
+<Hero  />
 <TransformSDLC />
 <WhyTeamsChoose />
 <WorksWithTools />

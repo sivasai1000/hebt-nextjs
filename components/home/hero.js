@@ -69,7 +69,7 @@ export default function Hero() {
 }, [text, deleting, phraseIndex]);
 
   return (
-    <div className="relative w-full overflow-hidden flex flex-col px-4 sm:px-6 lg:px-8">
+    <div className="relative w-full overflow-hidden flex flex-col px-4 sm:px-6 lg:px-8 ">
 
       {/* BACKGROUND CROSSFADE LAYER */}
       <div className="absolute inset-0 z-0">

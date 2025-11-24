@@ -7,7 +7,7 @@ import Box from "@/components/common/box";
 export default function BuildSoftware() {
   return (
     <div
-      className=" !lg:m-4
+      className=" !lg:m-4 
         relative w-full overflow-hidden
         rounded-b-[48px]
         pb-10

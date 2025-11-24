@@ -6,7 +6,7 @@ import Text from "@/components/common/text";
 export default function Footer() {
   return (
     <footer
-      className=" p-5 sm:pd-5  md:p-5 lg:p-8
+      className=" p-5 sm:pd-5  md:p-5 lg:p-8 
         mt-20 
         w-screen 
         relative left-1/2 right-1/2 

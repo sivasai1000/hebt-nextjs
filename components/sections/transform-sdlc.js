@@ -54,7 +54,7 @@ export default function TransformSDLC() {
   return (
     <SectionContainer
       id="platform"
-      className="max-w-7xl mx-auto px-4 sm:px-6"
+      className="max-w-7xl mx-auto px-4 sm:px-6 lg:mt-20 lg:mb-5"
     >
      <div className="flex flex-col md:flex-row md:items-start gap-10 md:gap-28 relative">
 
@@ -88,7 +88,7 @@ export default function TransformSDLC() {
   {cards.map((c, idx) => (
   <div
     key={c.id}
-    className="
+    className=" 
       w-full
       max-w-[720px]
       relative

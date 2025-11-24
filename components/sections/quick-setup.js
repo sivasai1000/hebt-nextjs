@@ -71,7 +71,7 @@ hebt deploy --auto-configure
   }, [started]);
 
   return (
-    <SectionContainer   className="pb-20" ref={sectionRef}>
+    <SectionContainer   className="pb-20 " ref={sectionRef}>
       {/* Outer Card */}
       <div
         className="
@@ -98,7 +98,7 @@ hebt deploy --auto-configure
         {/* Body */}
         <div className="p-6 md:p-10 ">
           <h2
-            className="
+            className=" 
               text-center font-[var(--font-bricolage)] font-semibold
               text-[26px] sm:text-[32px] md:text-[36px] lg:text-[40px]
               bg-gradient-to-r from-[#FFFDF8] to-[rgba(255,231,199,0.5)]
