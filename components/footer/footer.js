@@ -6,11 +6,11 @@ import Text from "@/components/common/text";
 export default function Footer() {
   return (
     <footer
-      className=" p-5 sm:pd-5  md:p-5 lg:p-8 
+      className="
+        p-5 md:p-5 lg:p-4
         mt-20 
-        w-screen 
-        relative left-1/2 right-1/2 
-        -ml-[50vw] -mr-[50vw]
+        w-full 
+        relative
       "
     >
       <div className="w-full bg-[#0F0F0E] rounded-[20px] overflow-hidden">
@@ -18,24 +18,25 @@ export default function Footer() {
           className="
             w-full
             mx-auto 
-            px-6 sm:px-10 lg:px-20   /* RESPONSIVE PADDING */
+            px-6 sm:px-10 lg:px-8
             py-10 md:py-12 lg:py-14 
             flex flex-col 
-            gap-14 lg:gap-16
+            gap-14 lg:gap-10
             relative
           "
         >
-          {/* TOP ROW */}
+          {/* TOP ROW - 5 COLUMNS */}
           <Box
             className="
               grid 
               grid-cols-1 
-              lg:grid-cols-[350px_1fr]
-              gap-12 lg:gap-16
+              lg:grid-cols-[420px_1fr] 
+              gap-16 
+              items-start
               relative z-10
             "
           >
-            {/* LOGO + DESCRIPTION */}
+            {/* COLUMN 1 - LOGO + DESCRIPTION */}
             <Box className="max-w-sm">
               <Box className="flex items-center gap-3 mb-4">
                 <img src="/assets/images/hebtai.svg" alt="HEBT AI" />
@@ -59,81 +60,84 @@ export default function Footer() {
               </Box>
             </Box>
 
-            {/* FOOTER COLUMNS */}
-            <Box
-              className="
-                grid 
-                grid-cols-2 sm:grid-cols-3 lg:grid-cols-4
-                gap-10 
-                text-white 
-              "
-            >
-              {/* Platform */}
-              <Box>
-                <h5 className="text-white font-semibold mb-4">Platform</h5>
-                <ul className="space-y-2 text-[#FFFFFF94] text-sm">
-                  <li>AI Code Generation</li>
-                  <li>SDLC Automation</li>
-                  <li>Testing & QA</li>
-                  <li>Deployment & CI/CD</li>
-                  <li>Maintenance & Support</li>
-                </ul>
-              </Box>
+            {/* COLUMNS 2–5 - EQUAL WIDTH GRID */}
+           <Box
+  className="
+    grid 
+    grid-cols-2 
+    sm:grid-cols-3 
+    lg:grid-cols-4 
+    lg:gap-17 gap-10
+    auto-cols-fr
+    min-w-[180px]
+    place-items-start
+    text-white
+  "
+>
+  {/* Platform */}
+  <Box>
+    <h5 className="text-white font-semibold mb-4">Platform</h5>
+    <ul className="space-y-2 text-[#FFFFFF94] text-sm">
+      <li>AI Code Generation</li>
+      <li>SDLC Automation</li>
+      <li>Testing & QA</li>
+      <li>Deployment & CI/CD</li>
+      <li>Maintenance & Support</li>
+    </ul>
+  </Box>
 
-              {/* Solutions */}
-              <Box>
-                <h5 className="text-white font-semibold mb-4">Solutions</h5>
-                <ul className="space-y-2 text-white/70 text-sm">
-                  <li>Small & Medium Enterprises</li>
-                  <li>Enterprise Solutions</li>
-                  <li>Startup Accelerator</li>
-                  <li>Agency Partners</li>
-                  <li>Custom Development</li>
-                </ul>
-              </Box>
+  {/* Solutions */}
+  <Box>
+    <h5 className="text-white font-semibold mb-4">Solutions</h5>
+    <ul className="space-y-2 text-white/70 text-sm whitespace-nowrap">
+      <li>Small & Medium Enterprises</li>
+      <li>Enterprise Solutions</li>
+      <li>Startup Accelerator</li>
+      <li>Agency Partners</li>
+      <li>Custom Development</li>
+    </ul>
+  </Box>
 
-              {/* Resources */}
-              <Box>
-                <h5 className="text-white font-semibold mb-4">Resources</h5>
-                <ul className="space-y-2 text-white/70 text-sm">
-                  <li>Documentation</li>
-                  <li>API Reference</li>
-                  <li>Case Studies</li>
-                  <li>Developer Blog</li>
-                  <li>Community Forum</li>
-                </ul>
-              </Box>
+  {/* Resources */}
+  <Box>
+    <h5 className="text-white font-semibold mb-4">Resources</h5>
+    <ul className="space-y-2 text-white/70 text-sm">
+      <li>Documentation</li>
+      <li>API Reference</li>
+      <li>Case Studies</li>
+      <li>Developer Blog</li>
+      <li>Community Forum</li>
+    </ul>
+  </Box>
 
-              {/* Explore */}
-              <Box>
-                <h5 className="text-white font-semibold mb-4">Explore</h5>
-                <ul className="space-y-2 text-white/70 text-sm">
-                  <li>About HEBT AI</li>
-                  <li>Careers</li>
-                  <li>Contact Us</li>
-                  <li>Privacy Policy</li>
-                  <li>Terms of Service</li>
-                </ul>
-              </Box>
-            </Box>
+  {/* Explore */}
+  <Box>
+    <h5 className="text-white font-semibold mb-4">Explore</h5>
+    <ul className="space-y-2 text-white/70 text-sm">
+      <li>About HEBT AI</li>
+      <li>Careers</li>
+      <li>Contact Us</li>
+      <li>Privacy Policy</li>
+      <li>Terms of Service</li>
+    </ul>
+  </Box>
+</Box>
+
           </Box>
 
           {/* MIDDLE IMAGE */}
-     <div className="text-center pt-6">
-  <img
-    src="/assets/images/footerhebt.svg"
-    alt="hebt"
-    className="mx-auto"
-    style={{
-      width: "763px",
-      height: "200px",
-      opacity: 1,
-      transform: "rotate(0deg)",
-    }}
-  />
-</div>
-
-
+          <div className="text-center ">
+            <img
+              src="/assets/images/footerhebt.svg"
+              alt="hebt"
+              className="mx-auto"
+              style={{
+                width: "763px",
+                height: "200px",
+                opacity: 1,
+              }}
+            />
+          </div>
 
           {/* BOTTOM ROW */}
           <Box
@@ -141,7 +145,7 @@ export default function Footer() {
               flex flex-col sm:flex-row 
               justify-between items-center
               gap-6
-              pt-6
+              
             "
           >
             <span className="text-white/60 text-sm">
