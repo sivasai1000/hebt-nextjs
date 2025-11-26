@@ -4,7 +4,7 @@ import Text from "@/components/common/text";
 
 export default function WhyTeamsChoose() {
   return (
-    <SectionContainer id="solutions " sectionClassName="border-t-1 mt-8 border-[#12100F]">
+    <SectionContainer id="solutions" sectionClassName="border-t-1 mt-8 border-[#12100F]">
       {/* TITLE */}
      <div className="relative flex justify-center mt-4">
        {/* ORANGE GLOW BACKGROUND */} 
