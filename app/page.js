@@ -9,17 +9,15 @@ import Builder from "@/components/sections/build-software";
 
 
 export default function Page() {
-return (
-<main>
-    
-<Hero  />
-<TransformSDLC />
-<WhyTeamsChoose />
-<WorksWithTools />
-<QuickSetup />
-<Builder/>
-<Footer />
-
-</main>
-);
+  return (
+    <main className="isolate relative">
+      <Hero />
+      <TransformSDLC />
+      <WhyTeamsChoose />
+      <WorksWithTools />
+      <QuickSetup />
+      <Builder />
+      <Footer />
+    </main>
+  );
 }
