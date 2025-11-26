@@ -1,5 +1,5 @@
 import Hero from '@/components/home/hero';
-import Navbar from '@/components/nav/navbar';
+
 import TransformSDLC from '@/components/sections/transform-sdlc';
 import WhyTeamsChoose from '@/components/sections/why-teams-choose';
 import WorksWithTools from '@/components/sections/tools';

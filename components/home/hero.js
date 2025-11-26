@@ -6,10 +6,10 @@ import HeroInput from "./hero-input";
 import Navbar from "../nav/navbar";
 
 const bgImages = [
-  "/assets/images/bg5.svg",
-  "/assets/images/bg6.svg",
-  "/assets/images/bg7.svg",
-  "/assets/images/bg8.svg",
+  "/assets/images/bg5.png",
+  "/assets/images/bg6.png",
+  "/assets/images/bg7.png",
+  "/assets/images/bg8.png",
 ];
 
 const phrases = [
