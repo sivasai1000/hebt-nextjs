@@ -26,7 +26,7 @@ export default function Hero() {
   const [phraseIndex, setPhraseIndex] = useState(0);
   const [deleting, setDeleting] = useState(false);
 
-  // Background crossfade
+  // Background switch (no fade)
   useEffect(() => {
     const interval = setInterval(() => {
       setBgIndex((prev) => (prev + 1) % bgImages.length);
@@ -70,16 +70,15 @@ export default function Hero() {
   return (
     <div className="relative w-full overflow-hidden flex flex-col px-4 sm:px-6 lg:px-8 isolate">
 
-      {/* BACKGROUND CROSSFADE LAYER */}
+      {/* BACKGROUND SWITCH WITHOUT FADE */}
       <div className="absolute inset-0 z-0 hero-bg">
         {bgImages.map((src, idx) => (
           <img
             key={idx}
             src={src}
             className={`
-              absolute inset-0 w-full h-full object-cover
-              transition-opacity duration-700
-              ${idx === bgIndex ? "opacity-100" : "opacity-0"}
+              absolute inset-0 w-full h-full object-cover object-center
+              ${idx === bgIndex ? "block" : "hidden"}
             `}
           />
         ))}
@@ -99,11 +98,8 @@ export default function Hero() {
           Your<br />
 
           <span className="font-semibold inline-flex justify-center items-center gap-3">
-
-            {/* LEFT BRACE */}
             <span className="gradient-brace">{'{'}</span>
 
-            {/* TYPING TEXT */}
             <span
               className="
                 gradient-text typing-cursor
@@ -115,7 +111,6 @@ export default function Hero() {
               {text}
             </span>
 
-            {/* RIGHT BRACE */}
             <span className="gradient-brace">{'}'}</span>
           </span>
 
@@ -143,17 +138,8 @@ export default function Hero() {
 
       <style>
         {`
-          .typing-cursor::after {
-            content: '|';
-            margin-left: 4px;
-            animation: cursorBlink 0.7s infinite;
-            color: #FF7254;
-          }
-
-          @keyframes cursorBlink {
-            0% { opacity: 1; }
-            50% { opacity: 0; }
-            100% { opacity: 1; }
+          .hero-bg img {
+            will-change: auto;
           }
         `}
       </style>
