@@ -26,7 +26,7 @@ export default function Hero() {
   const [phraseIndex, setPhraseIndex] = useState(0);
   const [deleting, setDeleting] = useState(false);
 
-  // Background crossfade timer
+  // Background crossfade
   useEffect(() => {
     const interval = setInterval(() => {
       setBgIndex((prev) => (prev + 1) % bgImages.length);
@@ -34,7 +34,7 @@ export default function Hero() {
     return () => clearInterval(interval);
   }, []);
 
-  // Preload images (removes flicker)
+  // Preload images
   useEffect(() => {
     bgImages.forEach((src) => {
       const img = new Image();
@@ -42,43 +42,43 @@ export default function Hero() {
     });
   }, []);
 
+  // Typing effect
   useEffect(() => {
-  const currentPhrase = phrases[phraseIndex];
+    const currentPhrase = phrases[phraseIndex];
 
-  const timeout = setTimeout(() => {
-    if (!deleting) {
-      // typing forward (slow)
-      setText(currentPhrase.slice(0, text.length + 1));
+    const timeout = setTimeout(() => {
+      if (!deleting) {
+        setText(currentPhrase.slice(0, text.length + 1));
 
-      if (text.length + 1 === currentPhrase.length) {
-        setTimeout(() => setDeleting(true), 2000); // longer pause before delete
+        if (text.length + 1 === currentPhrase.length) {
+          setTimeout(() => setDeleting(true), 2000);
+        }
+      } else {
+        setText(currentPhrase.slice(0, text.length - 1));
+
+        if (text.length === 0) {
+          setDeleting(false);
+          setPhraseIndex((prev) => (prev + 1) % phrases.length);
+          setText("");
+        }
       }
-    } else {
-      // deleting (slow)
-      setText(currentPhrase.slice(0, text.length - 1));
+    }, deleting ? 110 : 150);
 
-      if (text.length === 0) {
-        setDeleting(false);
-        setPhraseIndex((prev) => (prev + 1) % phrases.length);
-        setText(""); // reset text
-      }
-    }
-  }, deleting ? 110 : 150); // NEW SPEEDS
-
-  return () => clearTimeout(timeout);
-}, [text, deleting, phraseIndex]);
+    return () => clearTimeout(timeout);
+  }, [text, deleting, phraseIndex]);
 
   return (
-    <div className="relative w-full overflow-hidden flex flex-col px-4 sm:px-6 lg:px-8 ">
+    <div className="relative w-full overflow-hidden flex flex-col px-4 sm:px-6 lg:px-8">
 
       {/* BACKGROUND CROSSFADE LAYER */}
-      <div className="absolute inset-0 z-0">
+      <div className="absolute inset-0 z-0 hero-bg">
         {bgImages.map((src, idx) => (
           <img
             key={idx}
             src={src}
             className={`
-              absolute inset-0 w-full h-full object-cover 
+              absolute inset-0 w-full h-full object-cover
+              transition-opacity duration-700
               ${idx === bgIndex ? "opacity-100" : "opacity-0"}
             `}
           />
@@ -100,44 +100,23 @@ export default function Hero() {
 
           <span className="font-semibold inline-flex justify-center items-center gap-3">
 
-            <span
-              className="bg-clip-text text-transparent"
-              style={{
-                background:
-                  "linear-gradient(270deg, #FFFDF8 0%, rgba(255,231,199,0.5) 100%)",
-                WebkitBackgroundClip: "text",
-              }}
-            >
-              {"{"}
-            </span>
+            {/* LEFT BRACE */}
+            <span className="gradient-brace">{'{'}</span>
 
+            {/* TYPING TEXT */}
             <span
               className="
-              typing-cursor
-              inline-block
-              text-[32px] sm:text-[42px] md:text-[56px] lg:text-[72px]
-              min-w-[50px]
-              bg-clip-text text-transparent
-            "
-              style={{
-                background:
-                  "linear-gradient(90deg, #2F0800 0%, #FF7254 100%)",
-                WebkitBackgroundClip: "text",
-              }}
+                gradient-text typing-cursor
+                inline-block
+                text-[32px] sm:text-[42px] md:text-[56px] lg:text-[72px]
+                min-w-[50px]
+              "
             >
               {text}
             </span>
 
-            <span
-              className="bg-clip-text text-transparent"
-              style={{
-                background:
-                  "linear-gradient(270deg, #FFFDF8 0%, rgba(255,231,199,0.5) 100%)",
-                WebkitBackgroundClip: "text",
-              }}
-            >
-              {"}"}
-            </span>
+            {/* RIGHT BRACE */}
+            <span className="gradient-brace">{'}'}</span>
           </span>
 
           <br />
@@ -156,8 +135,7 @@ export default function Hero() {
         >
           From proposal to deployment, HEBT AI transforms your ideas into
           production-ready applications in record time. Experience the future
-          of software development with our intelligent SDLC automation
-          platform.
+          of software development with our intelligent SDLC automation platform.
         </p>
 
         <HeroInput />
